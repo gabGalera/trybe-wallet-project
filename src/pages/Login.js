@@ -9,8 +9,18 @@ class Login extends React.Component {
           <h1>Trybe Wallet</h1>
         </div>
         <form>
-          <input id="email-input" type="email" placeholder="E-mail" />
-          <input id="password-input" type="password" placeholder="Senha" />
+          <input
+            id="email-input"
+            type="email"
+            placeholder="E-mail"
+            data-testid="email-input"
+          />
+          <input
+            id="password-input"
+            type="password"
+            placeholder="Senha"
+            data-testid="password-input"
+          />
           <button type="button">Entrar</button>
         </form>
       </div>
