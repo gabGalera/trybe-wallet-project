@@ -42,6 +42,59 @@ body {
   border-radius: 5px;
 }
 
+#wallet-title-container {
+  position: absolute;
+  width: 1037px;
+  height: 482px;
+  left: 121px;
+  top: -50px;
+
+  background: #FFFFFF;
+  box-shadow: -4px 9px 13px rgba(5, 18, 54, 0.4);
+  border-radius: 10px;
+}
+
+#title {
+  position: absolute;
+  width: 250.19px;
+  height: 52.29px;
+  left: 230.99px;
+  top: 56.99px;
+}
+
+#total-expenses {
+  position: absolute;
+  width: 233px;
+  height: 14px;
+  left: 592px;
+  top: 88px;
+
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+
+  color: #003BE5;
+}
+
+#user-email{
+  position: absolute;
+  width: 123px;
+  height: 14px;
+  left: 931px;
+  top: 88px;
+
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+
+  color: #2FC18C;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
