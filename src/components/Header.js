@@ -27,7 +27,7 @@ class Header extends Component {
                     return data.value === '' ? 0 : data.value;
                   })
                   .reduce((acc, curr) => (parseFloat(acc) + parseFloat(curr)).toFixed(2))
-              ) : 0}
+              ) : '0.00'}
             </span>
             <span data-testid="header-currency-field">
               {' '}

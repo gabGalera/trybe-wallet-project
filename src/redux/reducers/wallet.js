@@ -1,4 +1,5 @@
 import {
+  DELETE_EXPENSE,
   RECEIVED_CURRENCIES,
   RECEIVED_CURRENCIES_NAME, REQUEST_CURRENCIES, SUBMIT_EXPENSES } from '../actions';
 
@@ -38,6 +39,14 @@ const wallet = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       expenses: [...state.expenses],
+    };
+  case DELETE_EXPENSE:
+    // action.newExpenses.forEach((item, index) => {
+    //   item.id = index;
+    // });
+    return {
+      ...state,
+      expenses: [...action.newExpenses],
     };
   default:
     return state;

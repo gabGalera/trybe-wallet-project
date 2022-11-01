@@ -52,3 +52,10 @@ export const addExpense = (
   type: SUBMIT_EXPENSES,
   expenses,
 });
+
+export const DELETE_EXPENSE = 'DELETE_EXPENSE';
+
+export const deleteExpense = (newExpenses) => ({
+  type: DELETE_EXPENSE,
+  newExpenses,
+});

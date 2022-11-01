@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import store from '../redux/store';
+import { deleteExpense } from '../redux/actions/index';
 
 class Table extends Component {
+  deleteExpense = ({ target }) => {
+    const { expenses } = store.getState().wallet;
+    const { dispatch } = this.props;
+    console.log(target.name);
+    const newExpenses = expenses
+      .filter((item) => Number(item.id) !== Number(target.name));
+    console.log(newExpenses);
+    dispatch(deleteExpense(newExpenses));
+  };
+
   render() {
     const { expenses } = store.getState().wallet;
-    console.log(expenses);
     return (
       <div id="blue-box">
         <table>
@@ -36,7 +47,16 @@ class Table extends Component {
                     }
                   </td>
                   <td>Real</td>
-                  <td />
+                  <td>
+                    <button
+                      name={ item.id }
+                      onClick={ this.deleteExpense }
+                      type="button"
+                      data-testid="delete-btn"
+                    >
+                      Excluir
+                    </button>
+                  </td>
                 </tr>
               ))) : <tr />}
           </tbody>
@@ -45,6 +65,10 @@ class Table extends Component {
     );
   }
 }
+
+Table.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = (state) => ({
   expenses: state.wallet.expenses,
