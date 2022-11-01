@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import store from '../redux/store';
-import { fetchCurrenciesName, submitExpenses } from '../redux/actions';
+import { fetchCurrenciesName, addExpense, fetchCurrencies } from '../redux/actions';
 
 class WalletForm extends Component {
   constructor() {
@@ -13,7 +13,7 @@ class WalletForm extends Component {
       submitCurrency: '',
       submitMethod: '',
       submitTag: '',
-      value: 0,
+      value: '',
       description: '',
     };
   }
@@ -34,14 +34,10 @@ class WalletForm extends Component {
     });
   };
 
-  fetchCurrencies() {
-    return fetch('https://economia.awesomeapi.com.br/json/all')
-      .then((response) => response.json())
-      .then((currencies) => currencies);
-  }
-
   render() {
-    const { isFetching, value, description } = this.state;
+    const { isFetching, value, description, submitCurrency,
+      submitMethod,
+      submitTag } = this.state;
     const { dispatch } = this.props;
     const currenciesName = store.getState().wallet.currencies;
     if (isFetching) return <h1>Loading...</h1>;
@@ -65,59 +61,59 @@ class WalletForm extends Component {
         <select
           data-testid="currency-input"
           name="submitCurrency"
-          onClick={ this.handleChange }
+          value={ submitCurrency }
+          // onClick={ this.handleChange }
+          onChange={ this.handleChange }
         >
+          <option>Selecione uma taxa</option>
           {currenciesName
             .map((currency) => (
-              <option key={ currency }>{currency}</option>
+              <option key={ currency } value={ currency }>{currency}</option>
             ))}
         </select>
         <select
           data-testid="method-input"
           name="submitMethod"
-          onClick={ this.handleChange }
+          value={ submitMethod }
+          onChange={ this.handleChange }
         >
-          <option>Dinheiro</option>
-          <option>Cartão de crédito</option>
-          <option>Cartão de débito</option>
+          <option>Selecione um método</option>
+          <option value="Dinheiro">Dinheiro</option>
+          <option value="Cartão de crédito">Cartão de crédito</option>
+          <option value="Cartão de débito">Cartão de débito</option>
         </select>
         <select
           data-testid="tag-input"
           name="submitTag"
-          onClick={ this.handleChange }
+          value={ submitMethod }
+          onChange={ this.handleChange }
         >
-          <option>Alimentação</option>
-          <option>Lazer</option>
-          <option>Trabalho</option>
-          <option>Transporte</option>
-          <option>Saúde</option>
+          <option>Selecione uma tag</option>
+          <option value="Alimentação">Alimentação</option>
+          <option value="Lazer">Lazer</option>
+          <option value="Trabalho">Trabalho</option>
+          <option value="Transporte">Transporte</option>
+          <option value="Saúde">Saúde</option>
         </select>
         <button
           type="button"
           onClick={ () => {
-            const {
+            const expenses = {
               submitCurrency,
               submitMethod,
               submitTag,
-            } = this.state;
-            this.fetchCurrencies()
-              .then((exchangeRates) => {
-                const expenses = { submitCurrency,
-                  submitMethod,
-                  submitTag,
-                  value,
-                  description,
-                  exchangeRates };
-                this.setState({
-                  value: 0,
-                  description: '',
-                });
-                dispatch(submitExpenses(expenses));
-              });
+              value,
+              description,
+            };
+            this.setState({
+              value: '',
+              description: '',
+            });
+            dispatch(addExpense(expenses));
+            dispatch(fetchCurrencies());
           } }
         >
           Adicionar despesa
-
         </button>
       </form>
     );

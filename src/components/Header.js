@@ -4,8 +4,7 @@ import store from '../redux/store';
 
 class Header extends Component {
   render() {
-    const { user: { email } } = store.getState();
-    console.log(email);
+    const { user: { email }, wallet: { expenses } } = store.getState();
     return (
       <div id="wallet-title-container">
         <div>
@@ -17,8 +16,23 @@ class Header extends Component {
           <span id="total-expenses">
             Total de despesas:
             {' '}
-            <span data-testid="total-field">0 </span>
-            <span data-testid="header-currency-field">BRL</span>
+            <span data-testid="total-field">
+              {expenses.length > 0 && expenses[expenses.length - 1].exchangeRates ? (
+                expenses
+                  .map((data) => {
+                    if (data.currency !== '') {
+                      const askPrice = data.exchangeRates[data.currency].ask;
+                      return (data.value * askPrice).toFixed(2);
+                    }
+                    return data.value === '' ? 0 : data.value;
+                  })
+                  .reduce((acc, curr) => (parseFloat(acc) + parseFloat(curr)).toFixed(2))
+              ) : 0}
+            </span>
+            <span data-testid="header-currency-field">
+              {' '}
+              BRL
+            </span>
           </span>
         </p>
         <div id="user-email" data-testid="email-field">
@@ -31,6 +45,7 @@ class Header extends Component {
 
 const mapStateToProps = (state) => ({
   email: state.user.email,
+  expenses: state.wallet.expenses,
 });
 
 export default connect(mapStateToProps)(Header);

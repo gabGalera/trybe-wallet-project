@@ -35,18 +35,18 @@ export const receiveCurrencies = (currencies) => ({
   currencies,
 });
 
-// export function fetchCurrencies() {
-//   return (dispatch) => {
-//     dispatch(requestCurrencies());
-//     return fetch('https://economia.awesomeapi.com.br/json/all')
-//       .then((response) => response.json())
-//       .then((currencies) => dispatch(receiveCurrencies(currencies)));
-//   };
-// }
+export function fetchCurrencies() {
+  return (dispatch) => {
+    dispatch(requestCurrencies());
+    return fetch('https://economia.awesomeapi.com.br/json/all')
+      .then((response) => response.json())
+      .then((currencies) => dispatch(receiveCurrencies(currencies)));
+  };
+}
 
 export const SUBMIT_EXPENSES = 'SUBMIT_EXPENSES';
 
-export const submitExpenses = (
+export const addExpense = (
   expenses,
 ) => ({
   type: SUBMIT_EXPENSES,
