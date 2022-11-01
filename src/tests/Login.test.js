@@ -30,8 +30,8 @@ describe('Crie uma página inicial de login com os seguintes campos e caracterí
     const emailInput = screen.getByTestId('email-input');
     const passwordInput = screen.getByTestId('password-input');
     userEvent.type(emailInput, 'youShallPass@gmail.com');
-    userEvent.type(passwordInput, 1234567);
+    userEvent.type(passwordInput, '1234567');
 
-    // expect(screen.getByRole('button')).not.toBeDisabled();
+    expect(screen.getByRole('button')).not.toBeDisabled();
   });
 });

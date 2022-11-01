@@ -59,6 +59,7 @@ class WalletForm extends Component {
           onChange={ this.handleChange }
         />
         <select
+          type="select"
           data-testid="currency-input"
           name="submitCurrency"
           value={ submitCurrency }
