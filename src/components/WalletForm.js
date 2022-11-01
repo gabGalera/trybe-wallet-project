@@ -10,9 +10,9 @@ class WalletForm extends Component {
 
     this.state = {
       isFetching: true,
-      submitCurrency: '',
-      submitMethod: '',
-      submitTag: '',
+      submitCurrency: 'USD',
+      submitMethod: 'Dinheiro',
+      submitTag: 'Alimentação',
       value: '',
       description: '',
     };
@@ -75,6 +75,7 @@ class WalletForm extends Component {
           data-testid="method-input"
           name="submitMethod"
           value={ submitMethod }
+          onClick={ this.handleChange }
           onChange={ this.handleChange }
         >
           <option value="Dinheiro">Dinheiro</option>
@@ -85,6 +86,7 @@ class WalletForm extends Component {
           data-testid="tag-input"
           name="submitTag"
           value={ submitMethod }
+          onClick={ this.handleChange }
           onChange={ this.handleChange }
         >
           <option value="Alimentação">Alimentação</option>

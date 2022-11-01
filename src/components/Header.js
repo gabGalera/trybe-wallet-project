@@ -12,7 +12,7 @@ class Header extends Component {
             Trybe Wallet
           </h1>
         </div>
-        <p>
+        <div>
           <span id="total-expenses">
             Total de despesas:
             {' '}
@@ -34,7 +34,7 @@ class Header extends Component {
               BRL
             </span>
           </span>
-        </p>
+        </div>
         <div id="user-email" data-testid="email-field">
           {`${email}`}
         </div>
