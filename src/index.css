@@ -117,6 +117,32 @@ body {
   background: rgba(225, 229, 235, 0.49);
   border-radius: 0px;
 }
+
+#blue-box {
+  position: absolute;
+  width: 1255px;
+  height: 564px;
+  left: 63px;
+  top: 156px;
+
+  z-index: -1;
+  background: #003BE5;
+  box-shadow: -4px 9px 13px rgba(3, 107, 82, 0.3);
+  border-radius: 10px;
+}
+
+table {
+  position: absolute;
+  width: 1040px;
+  height: 129px;
+  left: 122px;
+  top: 421px;
+}
+
+th {
+  color: #FFFFFF;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
