@@ -25,13 +25,17 @@ describe('Crie uma página inicial de login com os seguintes campos e caracterí
     expect(screen.queryByRole('button', { name: /entrar/i })).toBeDisabled();
   });
   test('Crie um botão com o texto Entrar', () => {
-    renderWithRouterAndRedux(<App />);
+    const { history } = renderWithRouterAndRedux(<App />);
 
     const emailInput = screen.getByTestId('email-input');
     const passwordInput = screen.getByTestId('password-input');
     userEvent.type(emailInput, 'youShallPass@gmail.com');
     userEvent.type(passwordInput, '1234567');
 
-    expect(screen.getByRole('button')).not.toBeDisabled();
+    const button = screen.getByRole('button');
+    expect(button).not.toBeDisabled();
+    userEvent.click(button);
+
+    expect(history.location.pathname).toBe('/carteira');
   });
 });
