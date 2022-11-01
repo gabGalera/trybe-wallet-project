@@ -62,10 +62,9 @@ class WalletForm extends Component {
           data-testid="currency-input"
           name="submitCurrency"
           value={ submitCurrency }
-          // onClick={ this.handleChange }
+          onClick={ this.handleChange }
           onChange={ this.handleChange }
         >
-          <option>Selecione uma taxa</option>
           {currenciesName
             .map((currency) => (
               <option key={ currency } value={ currency }>{currency}</option>
@@ -77,7 +76,6 @@ class WalletForm extends Component {
           value={ submitMethod }
           onChange={ this.handleChange }
         >
-          <option>Selecione um método</option>
           <option value="Dinheiro">Dinheiro</option>
           <option value="Cartão de crédito">Cartão de crédito</option>
           <option value="Cartão de débito">Cartão de débito</option>
@@ -88,7 +86,6 @@ class WalletForm extends Component {
           value={ submitMethod }
           onChange={ this.handleChange }
         >
-          <option>Selecione uma tag</option>
           <option value="Alimentação">Alimentação</option>
           <option value="Lazer">Lazer</option>
           <option value="Trabalho">Trabalho</option>
