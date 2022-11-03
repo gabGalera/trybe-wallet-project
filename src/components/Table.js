@@ -2,17 +2,59 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import store from '../redux/store';
-import { deleteExpense } from '../redux/actions/index';
+import { editExpense, deleteExpense } from '../redux/actions/index';
 
 class Table extends Component {
   deleteExpense = ({ target }) => {
     const { expenses } = store.getState().wallet;
     const { dispatch } = this.props;
-    console.log(target.name);
+
     const newExpenses = expenses
       .filter((item) => Number(item.id) !== Number(target.name));
     console.log(newExpenses);
     dispatch(deleteExpense(newExpenses));
+  };
+
+  editMode = ({ target }) => {
+    const { dispatch } = this.props;
+
+    const addButton = document.getElementById('box-cinza').lastElementChild;
+    const editButton = document.createElement('button');
+    editButton.innerText = 'Editar despesa';
+    editButton.type = 'button';
+    editButton.setAttribute('data-testid', 'edit-btn');
+    editButton.addEventListener('click', () => {
+      const { value } = document.getElementById('box-cinza').childNodes[0];
+      const description = document.getElementById('box-cinza').childNodes[1].value;
+      const submitCurrency = document.getElementById('box-cinza').childNodes[2].value;
+      const submitMethod = document.getElementById('box-cinza').childNodes[3].value;
+      const submitTag = document.getElementById('box-cinza').childNodes[4].value;
+
+      const expenses = {
+        submitCurrency,
+        submitMethod,
+        submitTag,
+        value,
+        description,
+      };
+
+      dispatch(editExpense(expenses, target.name));
+
+      document.getElementById('box-cinza').childNodes[0].value = '';
+      document.getElementById('box-cinza').childNodes[1].value = '';
+      document.getElementById('box-cinza').childNodes[2].value = 'USD';
+      document.getElementById('box-cinza').childNodes[3].value = 'Dinheiro';
+      document.getElementById('box-cinza').childNodes[4].value = 'Alimentação';
+      document.getElementById('box-cinza')
+        .appendChild(addButton);
+      document.getElementById('box-cinza')
+        .removeChild(editButton);
+    });
+
+    document.getElementById('box-cinza')
+      .removeChild(addButton);
+    document.getElementById('box-cinza')
+      .appendChild(editButton);
   };
 
   render() {
@@ -48,6 +90,14 @@ class Table extends Component {
                   </td>
                   <td>Real</td>
                   <td>
+                    <button
+                      name={ item.id }
+                      onClick={ this.editMode }
+                      type="button"
+                      data-testid="edit-btn"
+                    >
+                      Editar
+                    </button>
                     <button
                       name={ item.id }
                       onClick={ this.deleteExpense }

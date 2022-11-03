@@ -85,7 +85,7 @@ class WalletForm extends Component {
         <select
           data-testid="tag-input"
           name="submitTag"
-          value={ submitMethod }
+          value={ submitTag }
           onClick={ this.handleChange }
           onChange={ this.handleChange }
         >
@@ -96,6 +96,7 @@ class WalletForm extends Component {
           <option value="Saúde">Saúde</option>
         </select>
         <button
+          className="add-button"
           type="button"
           onClick={ () => {
             const expenses = {

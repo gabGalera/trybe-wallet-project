@@ -1,5 +1,6 @@
 import {
   DELETE_EXPENSE,
+  EDIT_EXPENSE,
   RECEIVED_CURRENCIES,
   RECEIVED_CURRENCIES_NAME, REQUEST_CURRENCIES, SUBMIT_EXPENSES } from '../actions';
 
@@ -47,6 +48,17 @@ const wallet = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       expenses: [...action.newExpenses],
+    };
+  case EDIT_EXPENSE:
+    state.expenses[action.id].value = action.newExpenses.value;
+    state.expenses[action.id].description = action.newExpenses.description;
+    state.expenses[action.id].currency = action.newExpenses.submitCurrency;
+    state.expenses[action.id].method = action.newExpenses.submitMethod;
+    state.expenses[action.id].tag = action.newExpenses.submitTag;
+    console.log(state);
+    return {
+      ...state,
+      expenses: [...state.expenses],
     };
   default:
     return state;
