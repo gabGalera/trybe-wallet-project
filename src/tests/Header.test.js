@@ -13,8 +13,7 @@ describe('Crie um header para a página de carteira contendo as seguintes caract
     renderWithRouterAndRedux(<Header />);
 
     const total = screen.getByTestId('total-field');
-    console.log(total);
-    expect(total.innerHTML).toBe('0');
+    expect(total.innerHTML).toBe('0.00');
   });
   test('Um elemento que mostre qual câmbio está sendo utilizado, que neste caso será "BRL"', () => {
     renderWithRouterAndRedux(<Header />);

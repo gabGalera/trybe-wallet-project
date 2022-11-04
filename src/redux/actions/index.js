@@ -20,11 +20,12 @@ export const receiveCurrenciesName = (currencies) => ({
 });
 
 export function fetchCurrenciesName() {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(requestCurrencies());
-    return fetch('https://economia.awesomeapi.com.br/json/all')
-      .then((response) => response.json())
-      .then((currencies) => dispatch(receiveCurrenciesName(currencies)));
+
+    const fetchAPI = await fetch('https://economia.awesomeapi.com.br/json/all');
+    const JSON = await fetchAPI.json();
+    dispatch(receiveCurrenciesName(JSON));
   };
 }
 
@@ -36,11 +37,11 @@ export const receiveCurrencies = (currencies) => ({
 });
 
 export function fetchCurrencies() {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(requestCurrencies());
-    return fetch('https://economia.awesomeapi.com.br/json/all')
-      .then((response) => response.json())
-      .then((currencies) => dispatch(receiveCurrencies(currencies)));
+    const fetchAPI = await fetch('https://economia.awesomeapi.com.br/json/all');
+    const JSON = await fetchAPI.json();
+    dispatch(receiveCurrencies(JSON));
   };
 }
 

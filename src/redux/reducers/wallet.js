@@ -42,9 +42,6 @@ const wallet = (state = INITIAL_STATE, action) => {
       expenses: [...state.expenses],
     };
   case DELETE_EXPENSE:
-    // action.newExpenses.forEach((item, index) => {
-    //   item.id = index;
-    // });
     return {
       ...state,
       expenses: [...action.newExpenses],

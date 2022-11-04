@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import store from '../redux/store';
 import { fetchCurrenciesName, addExpense, fetchCurrencies } from '../redux/actions';
 
 class WalletForm extends Component {
@@ -9,7 +8,6 @@ class WalletForm extends Component {
     super();
 
     this.state = {
-      isFetching: true,
       submitCurrency: 'USD',
       submitMethod: 'Dinheiro',
       submitTag: 'Alimentação',
@@ -20,12 +18,7 @@ class WalletForm extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(fetchCurrenciesName())
-      .then(() => {
-        this.setState({
-          isFetching: false,
-        });
-      });
+    dispatch(fetchCurrenciesName());
   }
 
   handleChange = ({ target }) => {
@@ -35,12 +28,13 @@ class WalletForm extends Component {
   };
 
   render() {
-    const { isFetching, value, description, submitCurrency,
+    const { value, description, submitCurrency,
       submitMethod,
       submitTag } = this.state;
     const { dispatch } = this.props;
-    const currenciesName = store.getState().wallet.currencies;
-    if (isFetching) return <h1>Loading...</h1>;
+    const { currencies } = this.props;
+
+    if (currencies.length === 0) return <h1>Loading...</h1>;
 
     return (
       <form id="box-cinza">
@@ -66,7 +60,7 @@ class WalletForm extends Component {
           onClick={ this.handleChange }
           onChange={ this.handleChange }
         >
-          {currenciesName
+          {currencies
             .map((currency) => (
               <option key={ currency } value={ currency }>{currency}</option>
             ))}
@@ -109,6 +103,9 @@ class WalletForm extends Component {
             this.setState({
               value: '',
               description: '',
+              submitCurrency: 'USD',
+              submitMethod: 'Dinheiro',
+              submitTag: 'Alimentação',
             });
             dispatch(addExpense(expenses));
             dispatch(fetchCurrencies());
@@ -123,6 +120,7 @@ class WalletForm extends Component {
 
 WalletForm.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  currencies: PropTypes.shape().isRequired,
 };
 
 const mapStateToProps = (state) => ({
