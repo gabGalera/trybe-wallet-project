@@ -23,6 +23,7 @@ const wallet = (state = INITIAL_STATE, action) => {
         .filter((currency) => currency.codein !== 'BRLT')
         .map((code) => code.code),
     };
+
   case SUBMIT_EXPENSES:
     return {
       ...state,
@@ -33,6 +34,7 @@ const wallet = (state = INITIAL_STATE, action) => {
         currency: action.expenses.submitCurrency,
         method: action.expenses.submitMethod,
         tag: action.expenses.submitTag,
+        exchangeRates: action.currencies,
       }],
     };
   case RECEIVED_CURRENCIES:

@@ -31,28 +31,30 @@ export function fetchCurrenciesName() {
 
 export const RECEIVED_CURRENCIES = 'RECEIVED_CURRENCIES';
 
-export const receiveCurrencies = (currencies) => ({
-  type: RECEIVED_CURRENCIES,
-  currencies,
-});
-
-export function fetchCurrencies() {
-  return async (dispatch) => {
-    dispatch(requestCurrencies());
-    const fetchAPI = await fetch('https://economia.awesomeapi.com.br/json/all');
-    const JSON = await fetchAPI.json();
-    dispatch(receiveCurrencies(JSON));
-  };
-}
+// export const receiveCurrencies = (currencies) => ({
+//   type: RECEIVED_CURRENCIES,
+//   currencies,
+// });
 
 export const SUBMIT_EXPENSES = 'SUBMIT_EXPENSES';
 
 export const addExpense = (
   expenses,
+  currencies,
 ) => ({
   type: SUBMIT_EXPENSES,
   expenses,
+  currencies,
 });
+
+export function fetchCurrencies(expenses) {
+  return async (dispatch) => {
+    dispatch(requestCurrencies());
+    return fetch('https://economia.awesomeapi.com.br/json/all')
+      .then((respones) => respones.json())
+      .then((data) => dispatch(addExpense(expenses, data)));
+  };
+}
 
 export const DELETE_EXPENSE = 'DELETE_EXPENSE';
 

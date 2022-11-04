@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchCurrenciesName, addExpense, fetchCurrencies } from '../redux/actions';
+import { fetchCurrenciesName, fetchCurrencies } from '../redux/actions';
 
 class WalletForm extends Component {
   constructor() {
@@ -107,8 +107,7 @@ class WalletForm extends Component {
               submitMethod: 'Dinheiro',
               submitTag: 'Alimentação',
             });
-            dispatch(addExpense(expenses));
-            dispatch(fetchCurrencies());
+            dispatch(fetchCurrencies(expenses));
           } }
         >
           Adicionar despesa
@@ -120,7 +119,7 @@ class WalletForm extends Component {
 
 WalletForm.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  currencies: PropTypes.shape().isRequired,
+  currencies: PropTypes.arrayOf().isRequired,
 };
 
 const mapStateToProps = (state) => ({
