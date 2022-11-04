@@ -49,14 +49,15 @@ describe('Desenvolva um formulário para adicionar uma despesa contendo as segui
   });
 
   test('Um campo para selecionar uma categoria (tag) para a despesa', async () => {
+    const alimentacao = 'Alimentação';
+
     renderWithRouterAndRedux(<WalletForm />);
 
     await waitForElementToBeRemoved(screen.queryByRole('heading', { level: 1, name: /loading/i }));
     const tag = await screen.findByTestId('tag-input');
     expect(tag).toBeInTheDocument();
-
-    userEvent.selectOptions(tag, 'Alimentação');
-    expect(tag).toHaveValue('Alimentação');
+    userEvent.selectOptions(tag, alimentacao);
+    expect(tag).toHaveValue(alimentacao);
 
     userEvent.selectOptions(tag, 'Lazer');
     expect(tag).toHaveValue('Lazer');
