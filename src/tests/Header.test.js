@@ -22,13 +22,26 @@ describe('Crie um header para a página de carteira contendo as seguintes caract
     expect(total.innerHTML).toBe('0.00');
 
     const inputValue = await screen.findByTestId('value-input');
+    const inputDescription = await screen.findByTestId('description-input');
     const button = await screen.findByRole('button', { name: /adicionar/i });
 
     userEvent.type(inputValue, '100');
+    userEvent.type(inputDescription, 'Potatoes');
     expect(inputValue).toHaveValue(100);
+    expect(inputDescription).toHaveValue('Potatoes');
     userEvent.click(button);
 
     expect(inputValue.value).toBe('');
+    expect(inputDescription).toHaveValue('');
+
+    userEvent.type(inputValue, '200');
+    userEvent.type(inputDescription, 'Ovos');
+    expect(inputValue).toHaveValue(200);
+    expect(inputDescription).toHaveValue('Ovos');
+    userEvent.click(button);
+
+    expect(inputValue.value).toBe('');
+    expect(inputDescription).toHaveValue('');
 
     const totalField = await screen.findByTestId('total-field');
     await waitFor(async () => expect(totalField.innerHTML).not.toMatch('0.00'))
@@ -55,5 +68,24 @@ describe('Crie um header para a página de carteira contendo as seguintes caract
 
     expect(history.location.pathname).toBe('/carteira');
     expect(screen.getByText('youShallPass@gmail.com')).toBeInTheDocument();
+  });
+  test('Testa o valor 0 BRL', async () => {
+    renderWithRouterAndRedux(<App />, { initialEntries: ['/carteira'] });
+
+    waitForElementToBeRemoved(screen.queryByRole('heading', { level: 1, name: /loading/i }));
+    const total = screen.getByTestId('total-field');
+    expect(total.innerHTML).toBe('0.00');
+
+    const inputValue = await screen.findByTestId('value-input');
+    const inputDescription = await screen.findByTestId('description-input');
+    const button = await screen.findByRole('button', { name: /adicionar/i });
+
+    userEvent.type(inputValue, '0');
+    userEvent.type(inputDescription, 'Potatoes');
+    expect(inputValue).toHaveValue(0);
+    expect(inputDescription).toHaveValue('Potatoes');
+    userEvent.click(button);
+
+    expect(total.innerHTML).toBe('0.00');
   });
 });

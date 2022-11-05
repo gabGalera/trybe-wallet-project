@@ -24,7 +24,7 @@ class Header extends Component {
                       const askPrice = data.exchangeRates[data.currency].ask;
                       return (data.value * askPrice).toFixed(2);
                     }
-                    return data.value === '' ? '0.00' : data.value;
+                    return data.value;
                   })
                   .reduce((acc, curr) => (parseFloat(acc) + parseFloat(curr)).toFixed(2))
               ) : '0.00'}
