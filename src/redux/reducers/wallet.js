@@ -1,7 +1,7 @@
 import {
   DELETE_EXPENSE,
   EDIT_EXPENSE,
-  RECEIVED_CURRENCIES,
+  // RECEIVED_CURRENCIES,
   RECEIVED_CURRENCIES_NAME, REQUEST_CURRENCIES, SUBMIT_EXPENSES } from '../actions';
 
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
@@ -37,12 +37,12 @@ const wallet = (state = INITIAL_STATE, action) => {
         exchangeRates: action.currencies,
       }],
     };
-  case RECEIVED_CURRENCIES:
-    state.expenses[state.expenses.length - 1].exchangeRates = action.currencies;
-    return {
-      ...state,
-      expenses: [...state.expenses],
-    };
+  // case RECEIVED_CURRENCIES:
+  //   state.expenses[state.expenses.length - 1].exchangeRates = action.currencies;
+  //   return {
+  //     ...state,
+  //     expenses: [...state.expenses],
+  //   };
   case DELETE_EXPENSE:
     return {
       ...state,

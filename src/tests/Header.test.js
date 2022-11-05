@@ -1,10 +1,8 @@
 import React from 'react';
-import { screen, waitForElementToBeRemoved, act } from '@testing-library/react';
+import { screen, waitForElementToBeRemoved, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Header from '../components/Header';
-// import Wallet from '../pages/Wallet';
 import App from '../App';
-import mockData from './helpers/mockData';
 import { renderWithRouterAndRedux } from './helpers/renderWith';
 
 describe('Crie um header para a página de carteira contendo as seguintes características', () => {
@@ -12,45 +10,50 @@ describe('Crie um header para a página de carteira contendo as seguintes caract
     renderWithRouterAndRedux(<Header />);
 
     expect(screen.queryByTestId('email-field')).toBeInTheDocument();
+    expect(screen.queryByText(/trybe/i)).toBeInTheDocument();
+    expect(screen.queryByText(/total/i)).toBeInTheDocument();
   });
 
-  test.only('Um elemento com a despesa total gerada pela lista de gastos', async () => {
-    global.fetch = jest.fn(() => Promise.resolve({
-      json: () => Promise.resolve(mockData),
-    }));
+  test('Um elemento com a despesa total gerada pela lista de gastos', async () => {
+    renderWithRouterAndRedux(<App />, { initialEntries: ['/carteira'] });
 
-    const INITIAL_STATE = {
-      currencies: [], // array de string
-      expenses: [], // array de objetos, com cada objeto tendo as chaves id, value, currency, method, tag, description e exchangeRates
-      editor: false, // valor booleano que indica de uma despesa está sendo editada
-      idToEdit: 0, // valor numérico que armazena o id da despesa que esta sendo editada
-    };
+    waitForElementToBeRemoved(screen.queryByRole('heading', { level: 1, name: /loading/i }));
+    const total = screen.getByTestId('total-field');
+    expect(total.innerHTML).toBe('0.00');
 
-    const { store } = renderWithRouterAndRedux(<App />, { initialEntries: ['/carteira'] });
+    const inputValue = await screen.findByTestId('value-input');
+    const button = await screen.findByRole('button', { name: /adicionar/i });
 
-    // await waitForElementToBeRemoved(screen.queryByRole('heading', { level: 1, name: /loading/i }));
-    // const total = screen.getByTestId('total-field');
-    // expect(total.innerHTML).toBe('0.00');
+    userEvent.type(inputValue, '100');
+    expect(inputValue).toHaveValue(100);
+    userEvent.click(button);
 
-    // const inputValue = await screen.findByTestId('value-input');
-    // const button = await screen.findByRole('button', { name: /adicionar/i });
+    expect(inputValue.value).toBe('');
 
-    // userEvent.type(inputValue, '100');
-    // expect(inputValue).toHaveValue(100);
-    // userEvent.click(button);
-
-    // expect(global.fetch).toHaveBeenCalledTimes(2);
-    // expect(inputValue.value).toBe('');
-
-    // console.log(store.getState());
-    // expect((await screen.findByTestId('total-field')).innerHTML).not.toMatch('0.00');
-
-    // console.log(total.innerHTML);
+    const totalField = await screen.findByTestId('total-field');
+    await waitFor(async () => expect(totalField.innerHTML).not.toMatch('0.00'))
+      .then(async () => expect(totalField.innerHTML).not.toMatch('0.00'));
   });
   test('Um elemento que mostre qual câmbio está sendo utilizado, que neste caso será "BRL"', () => {
     renderWithRouterAndRedux(<Header />);
 
     const headerCurrency = screen.getByTestId('header-currency-field');
     expect(headerCurrency.innerHTML).toBe(' BRL');
+  });
+
+  test('Se o e-mail do usuário aparece', () => {
+    const { history } = renderWithRouterAndRedux(<App />);
+
+    const emailInput = screen.getByTestId('email-input');
+    const passwordInput = screen.getByTestId('password-input');
+    userEvent.type(emailInput, 'youShallPass@gmail.com');
+    userEvent.type(passwordInput, '1234567');
+
+    const button = screen.getByRole('button');
+    expect(button).not.toBeDisabled();
+    userEvent.click(button);
+
+    expect(history.location.pathname).toBe('/carteira');
+    expect(screen.getByText('youShallPass@gmail.com')).toBeInTheDocument();
   });
 });

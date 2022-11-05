@@ -29,7 +29,7 @@ export function fetchCurrenciesName() {
   };
 }
 
-export const RECEIVED_CURRENCIES = 'RECEIVED_CURRENCIES';
+// export const RECEIVED_CURRENCIES = 'RECEIVED_CURRENCIES';
 
 // export const receiveCurrencies = (currencies) => ({
 //   type: RECEIVED_CURRENCIES,

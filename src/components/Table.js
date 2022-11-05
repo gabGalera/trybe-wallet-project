@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import store from '../redux/store';
 import { editExpense, deleteExpense } from '../redux/actions/index';
 
 class Table extends Component {
   deleteExpense = ({ target }) => {
-    const { expenses } = store.getState().wallet;
+    const { expenses } = this.props;
     const { dispatch } = this.props;
 
     const newExpenses = expenses
@@ -58,7 +57,7 @@ class Table extends Component {
   };
 
   render() {
-    const { expenses } = store.getState().wallet;
+    const { expenses } = this.props;
     return (
       <div id="blue-box">
         <table>
@@ -120,6 +119,7 @@ class Table extends Component {
 
 Table.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  expenses: PropTypes.arrayOf().isRequired,
 };
 
 const mapStateToProps = (state) => ({
