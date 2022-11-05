@@ -42,7 +42,9 @@ describe('Crie um header para a página de carteira contendo as seguintes caract
 
     expect(inputValue.value).toBe('');
     expect(inputDescription).toHaveValue('');
-
+    // const teste = await store.getStore()
+    //   .wallet.expenses
+    //   .reduce((acc, curr) => (parseFloat(acc) + parseFloat(curr)).toFixed(2));
     const totalField = await screen.findByTestId('total-field');
     await waitFor(async () => expect(totalField.innerHTML).not.toMatch('0.00'))
       .then(async () => expect(totalField.innerHTML).not.toMatch('0.00'));
@@ -68,24 +70,5 @@ describe('Crie um header para a página de carteira contendo as seguintes caract
 
     expect(history.location.pathname).toBe('/carteira');
     expect(screen.getByText('youShallPass@gmail.com')).toBeInTheDocument();
-  });
-  test('Testa o valor 0 BRL', async () => {
-    renderWithRouterAndRedux(<App />, { initialEntries: ['/carteira'] });
-
-    waitForElementToBeRemoved(screen.queryByRole('heading', { level: 1, name: /loading/i }));
-    const total = screen.getByTestId('total-field');
-    expect(total.innerHTML).toBe('0.00');
-
-    const inputValue = await screen.findByTestId('value-input');
-    const inputDescription = await screen.findByTestId('description-input');
-    const button = await screen.findByRole('button', { name: /adicionar/i });
-
-    userEvent.type(inputValue, '0');
-    userEvent.type(inputDescription, 'Potatoes');
-    expect(inputValue).toHaveValue(0);
-    expect(inputDescription).toHaveValue('Potatoes');
-    userEvent.click(button);
-
-    expect(total.innerHTML).toBe('0.00');
   });
 });

@@ -20,11 +20,8 @@ class Header extends Component {
               {expenses.length > 0 ? (
                 expenses
                   .map((data) => {
-                    if (data.currency !== '') {
-                      const askPrice = data.exchangeRates[data.currency].ask;
-                      return (data.value * askPrice).toFixed(2);
-                    }
-                    return data.value;
+                    const askPrice = data.exchangeRates[data.currency].ask;
+                    return (data.value * askPrice).toFixed(2);
                   })
                   .reduce((acc, curr) => (parseFloat(acc) + parseFloat(curr)).toFixed(2))
               ) : '0.00'}
