@@ -1,19 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import styles from '../styles/Header.module.css';
 
 class Header extends Component {
   render() {
     const { email, expenses } = this.props;
     return (
-      <div id="wallet-title-container">
+      <div
+        id="wallet-title-container"
+        className={ styles.header__container }
+      >
+        <div
+          className={ styles.logo }
+          id="title"
+        />
         <div>
-          <h1 id="title">
-            Trybe Wallet
-          </h1>
-        </div>
-        <div>
-          <span id="total-expenses">
+          <span
+            className={ styles.total__expenses }
+            id="total-expenses"
+          >
+            <div
+              className={ styles.coins }
+            />
             Total de despesas:
             {' '}
             <span data-testid="total-field">
