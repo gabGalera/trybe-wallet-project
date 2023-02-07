@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { addEmail } from '../redux/actions';
+import styles from '../styles/Login.module.css';
 
 class Login extends React.Component {
   constructor() {
@@ -39,47 +40,58 @@ class Login extends React.Component {
     const { isDisabled, email, password } = this.state;
     const { dispatch } = this.props;
     return (
-      <div id="main-container">
-        <div id="title-container">
-          <div />
-          <h1>Trybe Wallet</h1>
-        </div>
-        <form>
-          <input
-            id="email-input"
-            type="email"
-            placeholder="E-mail"
-            data-testid="email-input"
-            value={ email }
-            onChange={
-              this.handleChange
-            }
-            required
-          />
-          <input
-            id="password-input"
-            type="password"
-            placeholder="Senha"
-            data-testid="password-input"
-            value={ password }
-            onChange={
-              this.handleChange
-            }
-            required
-          />
-          <Link to="/carteira">
-            <button
-              type="button"
-              disabled={ isDisabled }
-              onClick={
-                () => dispatch(addEmail(email))
+      <div className={ styles.background }>
+        <div
+          id="main-container"
+          className={ styles.container }
+        >
+          <div className={ styles.logo } />
+          <form className={ styles.forms }>
+            <input
+              className={ styles.inputs }
+              id="email-input"
+              type="email"
+              placeholder="E-mail"
+              data-testid="email-input"
+              value={ email }
+              onChange={
+                this.handleChange
               }
+              required
+            />
+            <input
+              className={ styles.inputs }
+              id="password-input"
+              type="password"
+              placeholder="Senha"
+              data-testid="password-input"
+              value={ password }
+              onChange={
+                this.handleChange
+              }
+              required
+            />
+            <Link
+              to="/carteira"
+              style={ {
+                height: '25%',
+                width: '70%',
+              } }
             >
-              Entrar
+              <button
+                className={ styles.play__button }
+                type="button"
+                disabled={ isDisabled }
+                onClick={
+                  () => dispatch(addEmail(email))
+                }
+              >
+                Entrar
 
-            </button>
-          </Link>
-        </form>
+              </button>
+            </Link>
+          </form>
+        </div>
       </div>
     );
   }

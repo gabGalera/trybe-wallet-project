@@ -5,40 +5,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* foto fundo */
-
-  /* position: absolute;
-  width: 1352.05px;
-  height: 965.39px;
-  left: -5.05px;
-  top: -147.39px; */
-
-  background-color: rgba(47, 193, 140, 1);
-  /* background: url('https://s3-alpha-sig.figma.com/img/a988/661c/2a997b4837d5d433e009660ffbb08433?Expires=1668384000&Signature=VZyUXtwh43iuMLnvcuxe-6pvDOMiSarj~lKzXHn6cOFDqbpoyF-fIU8QtafaxfQ~xyJtMW2hVg5anlXGckTl7YEqYFw7QQ7wWuHrJTNqDZhS0Jasimaljzn3F-HVtGZ5WWb0ew79hsRX6v1tOkDY7OdZdfbYnx1vauaC3gdJP1RrTBPQuRnTxPO8kpIDTfcBmiOcJDxJiBx8W~Mzd0RmfUhVOH--ZEMZ7zlm1bAuOKeAEU9cImley-ItzPrxEXwcpQmnz2klcDJRxWEX8T5HBmMb3EAOWVTbJmsA85u6jwhbSxB7FD7LHX9gneuUdpYqtRYbGdPOWMP9Otcsvjkeog__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA');
-  mix-blend-mode: luminosity;
-  opacity: 0.5; */
-}
-
-#main-container {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  width: 525px;
-  height: 356px;
-  left: 377px;
-  top: 201px;
-
-  background: #FFFFFF;
-  box-shadow: -4px 9px 13px rgba(3, 107, 82, 0.3);
-  border-radius: 10px;
-}
-
-#title-container {
-  /* position: absolute; */
-  width: 268.6px;
-  height: 56.14px;
-  left: 504.68px;
-  top: 260.02px;
 }
 
 #input-email { 
