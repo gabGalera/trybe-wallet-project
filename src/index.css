@@ -31,20 +31,12 @@ body {
   /* position: absolute; */
   width: 1255px;
   height: 564px;
-  margin-top: -200px;
+  /* margin-top: -200px; */
 
-  z-index: -1;
+  /* z-index: -1; */
   background: #003BE5;
   box-shadow: -4px 9px 13px rgba(3, 107, 82, 0.3);
   border-radius: 10px;
-}
-
-table {
-  /* position: absolute; */
-  width: 1040px;
-  height: 129px;
-  left: 122px;
-  top: 421px;
 }
 
 th {

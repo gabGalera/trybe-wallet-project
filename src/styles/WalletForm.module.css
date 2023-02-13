@@ -4,10 +4,11 @@
   border-radius: 0;
   display: flex;
   flex-direction: column;
-  height: 30%;
+  height: 45%;
   justify-content: space-evenly;
   width: 100%;
-  z-index: 1;
+
+  /* z-index: 1; */
 }
 
 .input__values {
@@ -59,5 +60,22 @@
   line-height: 14px;
   margin: 10px;
   padding: 6px;
+  width: 50%;
+}
+
+button {
+  background: #2fc18c;
+  border: 1px solid #2fc18c;
+  border-radius: 5px;
+  box-sizing: border-box;
+  color: white;
+  font-family: Epilogue , sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  height: 30%;
+  line-height: 14px;
+  margin-bottom: -12%;
+  text-align: center;
   width: 50%;
 }

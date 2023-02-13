@@ -23,11 +23,11 @@ class Table extends Component {
     editButton.type = 'button';
     editButton.setAttribute('data-testid', 'edit-btn');
     editButton.addEventListener('click', () => {
-      const { value } = document.getElementById('box-cinza').childNodes[0];
-      const description = document.getElementById('box-cinza').childNodes[1].value;
-      const submitCurrency = document.getElementById('box-cinza').childNodes[2].value;
-      const submitMethod = document.getElementById('box-cinza').childNodes[3].value;
-      const submitTag = document.getElementById('box-cinza').childNodes[4].value;
+      const description = document.getElementById('first-div').childNodes[0].value;
+      const submitTag = document.getElementById('first-div').childNodes[1].value;
+      const { value } = document.getElementById('second-div').childNodes[0];
+      const submitCurrency = document.getElementById('second-div').childNodes[1].value;
+      const submitMethod = document.getElementById('second-div').childNodes[2].value;
 
       const expenses = {
         submitCurrency,
@@ -39,11 +39,11 @@ class Table extends Component {
 
       dispatch(editExpense(expenses, target.name));
 
-      document.getElementById('box-cinza').childNodes[0].value = '';
-      document.getElementById('box-cinza').childNodes[1].value = '';
-      document.getElementById('box-cinza').childNodes[2].value = 'USD';
-      document.getElementById('box-cinza').childNodes[3].value = 'Dinheiro';
-      document.getElementById('box-cinza').childNodes[4].value = 'Alimentação';
+      document.getElementById('first-div').childNodes[0].value = '';
+      document.getElementById('second-div').childNodes[0].value = 0;
+      document.getElementById('second-div').childNodes[1].value = 'USD';
+      document.getElementById('second-div').childNodes[2].value = 'Dinheiro';
+      document.getElementById('first-div').childNodes[1].value = 'Alimentação';
       document.getElementById('box-cinza')
         .appendChild(addButton);
       document.getElementById('box-cinza')

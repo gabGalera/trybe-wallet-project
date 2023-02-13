@@ -39,16 +39,19 @@ class WalletForm extends Component {
 
     return (
       <form
+        id="box-cinza"
         className={ styles.box__cinza }
       >
-        <div className={ styles.first__div }>
+        <div
+          id="first-div"
+          className={ styles.first__div }
+        >
           <label
             htmlFor="description__input"
             className={ styles.first__label }
           >
             Descrição da despesa
             <input
-              // className={ styles.category__box }
               className={ styles.input__values }
               id="description__input"
               type="textarea"
@@ -81,6 +84,7 @@ class WalletForm extends Component {
           </label>
         </div>
         <div
+          id="second-div"
           className={ styles.first__div }
         >
           <label
@@ -122,30 +126,30 @@ class WalletForm extends Component {
             <option value="Cartão de crédito">Cartão de crédito</option>
             <option value="Cartão de débito">Cartão de débito</option>
           </select>
-          <button
-            className="add-button"
-            type="button"
-            onClick={ () => {
-              const expenses = {
-                submitCurrency,
-                submitMethod,
-                submitTag,
-                value,
-                description,
-              };
-              this.setState({
-                value: '',
-                description: '',
-                submitCurrency: 'USD',
-                submitMethod: 'Dinheiro',
-                submitTag: 'Alimentação',
-              });
-              dispatch(fetchCurrencies(expenses));
-            } }
-          >
-            Adicionar despesa
-          </button>
         </div>
+        <button
+          className="add-button"
+          type="button"
+          onClick={ () => {
+            const expenses = {
+              submitCurrency,
+              submitMethod,
+              submitTag,
+              value,
+              description,
+            };
+            this.setState({
+              value: '',
+              description: '',
+              submitCurrency: 'USD',
+              submitMethod: 'Dinheiro',
+              submitTag: 'Alimentação',
+            });
+            dispatch(fetchCurrencies(expenses));
+          } }
+        >
+          Adicionar despesa
+        </button>
       </form>
     );
   }
