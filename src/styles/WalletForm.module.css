@@ -17,7 +17,7 @@
   margin: 10px;
 }
 
-.labels {
+.first__label {
   align-items: center;
   color: #003be5;
   display: flex;
@@ -26,7 +26,19 @@
   font-style: normal;
   font-weight: 700;
   line-height: 14px;
-  width: 30%;
+  width: 40%;
+}
+
+.second__label {
+  align-items: center;
+  color: #003be5;
+  display: flex;
+  font-family: Epilogue , sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 14px;
+  width: 20%;
 }
 
 .first__div {

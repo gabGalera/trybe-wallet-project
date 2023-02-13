@@ -43,22 +43,23 @@ class WalletForm extends Component {
       >
         <div className={ styles.first__div }>
           <label
-            className={ styles.labels }
-            htmlFor="value-input"
+            htmlFor="description__input"
+            className={ styles.first__label }
           >
-            Valor
+            Descrição da despesa
             <input
+              // className={ styles.category__box }
               className={ styles.input__values }
-              id="value-input"
-              type="number"
-              data-testid="value-input"
-              name="value"
-              value={ value }
+              id="description__input"
+              type="textarea"
+              data-testid="description-input"
+              name="description"
+              value={ description }
               onChange={ this.handleChange }
             />
           </label>
           <label
-            className={ styles.labels }
+            className={ styles.first__label }
             htmlFor="categorais"
           >
             Categoria da despesa
@@ -79,15 +80,24 @@ class WalletForm extends Component {
             </select>
           </label>
         </div>
-        <div>
-
-          <input
-            type="textarea"
-            data-testid="description-input"
-            name="description"
-            value={ description }
-            onChange={ this.handleChange }
-          />
+        <div
+          className={ styles.first__div }
+        >
+          <label
+            className={ styles.second__label }
+            htmlFor="value-input"
+          >
+            Valor
+            <input
+              className={ styles.input__values }
+              id="value-input"
+              type="number"
+              data-testid="value-input"
+              name="value"
+              value={ value }
+              onChange={ this.handleChange }
+            />
+          </label>
           <select
             type="select"
             data-testid="currency-input"
