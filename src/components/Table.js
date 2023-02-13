@@ -16,6 +16,7 @@ class Table extends Component {
 
   editMode = ({ target }) => {
     const { dispatch } = this.props;
+    const secondDiv = 'second-div';
 
     const addButton = document.getElementById('box-cinza').lastElementChild;
     const editButton = document.createElement('button');
@@ -25,9 +26,9 @@ class Table extends Component {
     editButton.addEventListener('click', () => {
       const description = document.getElementById('first-div').childNodes[0].value;
       const submitTag = document.getElementById('first-div').childNodes[1].value;
-      const { value } = document.getElementById('second-div').childNodes[0];
-      const submitCurrency = document.getElementById('second-div').childNodes[1].value;
-      const submitMethod = document.getElementById('second-div').childNodes[2].value;
+      const { value } = document.getElementById(secondDiv).childNodes[0];
+      const submitCurrency = document.getElementById(secondDiv).childNodes[1].value;
+      const submitMethod = document.getElementById(secondDiv).childNodes[2].value;
 
       const expenses = {
         submitCurrency,
@@ -40,9 +41,9 @@ class Table extends Component {
       dispatch(editExpense(expenses, target.name));
 
       document.getElementById('first-div').childNodes[0].value = '';
-      document.getElementById('second-div').childNodes[0].value = 0;
-      document.getElementById('second-div').childNodes[1].value = 'USD';
-      document.getElementById('second-div').childNodes[2].value = 'Dinheiro';
+      document.getElementById(secondDiv).childNodes[0].value = 0;
+      document.getElementById(secondDiv).childNodes[1].value = 'USD';
+      document.getElementById(secondDiv).childNodes[2].value = 'Dinheiro';
       document.getElementById('first-div').childNodes[1].value = 'Alimentação';
       document.getElementById('box-cinza')
         .appendChild(addButton);
