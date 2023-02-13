@@ -25,7 +25,10 @@ class Header extends Component {
             />
             Total de despesas:
             {' '}
-            <span data-testid="total-field">
+            <span
+              className={ styles.total__field }
+              data-testid="total-field"
+            >
               {expenses.length > 0 ? (
                 expenses
                   .map((data) => {
@@ -35,13 +38,23 @@ class Header extends Component {
                   .reduce((acc, curr) => (parseFloat(acc) + parseFloat(curr)).toFixed(2))
               ) : '0.00'}
             </span>
-            <span data-testid="header-currency-field">
+            <span
+              className={ styles.total__field }
+              data-testid="header-currency-field"
+            >
               {' '}
               BRL
             </span>
           </span>
         </div>
-        <div id="user-email" data-testid="email-field">
+        <div
+          className={ styles.email__container }
+          id="user-email"
+          data-testid="email-field"
+        >
+          <div
+            className={ styles.profile__image }
+          />
           {`${email}`}
         </div>
       </div>

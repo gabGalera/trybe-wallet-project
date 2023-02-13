@@ -26,23 +26,6 @@ body {
 
 }
 
-#user-email{
-  /* position: absolute; */
-  width: 123px;
-  height: 14px;
-  left: 931px;
-  top: 88px;
-
-  font-family: 'Epilogue';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 14px;
-  display: flex;
-  align-items: center;
-
-  color: #2FC18C;
-}
 
 #box-cinza {
   /* position: absolute; */

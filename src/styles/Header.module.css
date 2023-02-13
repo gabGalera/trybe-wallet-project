@@ -18,6 +18,7 @@
   background: url('../images/coins.svg');
   background-size: cover;
   height: 25px;
+  margin: 4px;
   width: 25px;
 }
 
@@ -30,7 +31,30 @@
   font-style: normal;
   font-weight: 700;
   height: 14px;
-  justify-content: space-between;
+  justify-content: flex-start;
   line-height: 14px;
   width: 233px;
+}
+
+.total__field {
+  font-weight: 100;
+  margin: 0 2px 0 4px;
+}
+
+.email__container {
+  align-items: center;
+  color: #2fc18c;
+  display: flex;
+  font-family: Epilogue, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 14px;
+}
+
+.profile__image {
+  background: url('../images/profileImg.svg');
+  height: 25px;
+  margin: 5px;
+  width: 25px;
 }
