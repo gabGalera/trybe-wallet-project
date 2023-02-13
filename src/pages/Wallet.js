@@ -7,7 +7,14 @@ import styles from '../styles/Wallet.module.css';
 class Wallet extends React.Component {
   render() {
     return (
-      <>
+      <div
+        style={ {
+          display: 'flex',
+          justifyContent: 'center',
+          flexDirection: 'column',
+          alignItems: 'center',
+        } }
+      >
         <div
           className={ styles.container }
         >
@@ -15,7 +22,7 @@ class Wallet extends React.Component {
           <WalletForm />
         </div>
         <Table />
-      </>
+      </div>
     );
   }
 }
