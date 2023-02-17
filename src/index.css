@@ -7,19 +7,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-
-#edit-form form {
-  /* position: absolute; */
-  width: 1137px;
-  height: 134px;
-  left: 58px;
-  top: 0px;
-
-  background: rgba(225, 229, 235, 0.49);
-  border-radius: 0px;
-}
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

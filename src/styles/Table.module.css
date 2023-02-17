@@ -36,6 +36,24 @@ th:first-of-type {
   overflow-y: scroll;
 }
 
+.container::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+.container::-webkit-scrollbar-track {
+  background-color: white;
+  border-radius: 50px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background-color: #2fc18c;
+  border-radius: 50px;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
 table {
   margin: 5vh;
   max-height: 10%;
