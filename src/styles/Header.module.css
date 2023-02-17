@@ -9,8 +9,10 @@
 .logo {
   background: url('../images/logo.svg');
   background-repeat: no-repeat;
-  background-size: contain;
-  height: 20%;
+  background-size: 70% 70%;
+  height: 50%;
+  margin-left: -8vw;
+  margin-right: -20vw;
   width: 50%;
 }
 

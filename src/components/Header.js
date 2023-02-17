@@ -13,7 +13,7 @@ class Header extends Component {
       >
         <div
           className={ styles.logo }
-          id="title"
+          // id="title"
         />
         <div>
           <span
