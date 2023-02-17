@@ -7,29 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-#title {
 
-  width: 250.19px;
-  height: 52.29px;
-
-}
-
-
-#blue-box {
-  position: absolute;
-  width: 90vw;
-  height: 75vh;
-  top: 21vh;
-
-  z-index: -1;
-  background: #003BE5;
-  box-shadow: -4px 9px 13px rgba(3, 107, 82, 0.3);
-  border-radius: 10px;
-}
-
-th {
-  color: #FFFFFF;
-}
 
 #edit-form form {
   /* position: absolute; */

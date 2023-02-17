@@ -84,8 +84,8 @@ class WalletForm extends Component {
           </label>
         </div>
         <div
-          id="second-div"
           className={ styles.first__div }
+          id="second-div"
         >
           <label
             className={ styles.second__label }

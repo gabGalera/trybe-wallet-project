@@ -1,0 +1,42 @@
+th {
+  border-bottom: 1px solid white;
+  border-left: 1px solid white;
+  color: white;
+  padding: 5px;
+  width: 8vw;
+}
+
+td {
+  align-items: center;
+  border-top: 1px solid #2fc18c;
+  color: #2fc18c;
+
+  /* or 108% */
+  font-family: Epilogue , sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 13px;
+  padding: 5px;
+  text-align: center;
+  width: 8vw;
+}
+
+tr:first-of-type > * {
+  border-top: none;
+}
+
+th:first-of-type {
+  border-left: none;
+}
+
+.container {
+  height: 30vh;
+  max-height: 10%;
+  overflow-y: scroll;
+}
+
+table {
+  margin: 5vh;
+  max-height: 10%;
+}

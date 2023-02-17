@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { editExpense, deleteExpense } from '../redux/actions/index';
+import styles from '../styles/Table.module.css';
 
 class Table extends Component {
   deleteExpense = ({ target }) => {
@@ -16,7 +17,6 @@ class Table extends Component {
 
   editMode = ({ target }) => {
     const { dispatch } = this.props;
-    const secondDiv = 'second-div';
 
     const addButton = document.getElementById('box-cinza').lastElementChild;
     const editButton = document.createElement('button');
@@ -24,11 +24,11 @@ class Table extends Component {
     editButton.type = 'button';
     editButton.setAttribute('data-testid', 'edit-btn');
     editButton.addEventListener('click', () => {
-      const description = document.getElementById('first-div').childNodes[0].value;
-      const submitTag = document.getElementById('first-div').childNodes[1].value;
-      const { value } = document.getElementById(secondDiv).childNodes[0];
-      const submitCurrency = document.getElementById(secondDiv).childNodes[1].value;
-      const submitMethod = document.getElementById(secondDiv).childNodes[2].value;
+      const description = document.getElementById('description__input').value;
+      const submitTag = document.getElementById('categorias').value;
+      const { value } = document.getElementById('value-input');
+      const submitCurrency = document.getElementById('money').value;
+      const submitMethod = document.getElementById('methods').value;
 
       const expenses = {
         submitCurrency,
@@ -40,11 +40,11 @@ class Table extends Component {
 
       dispatch(editExpense(expenses, target.name));
 
-      document.getElementById('first-div').childNodes[0].value = '';
-      document.getElementById(secondDiv).childNodes[0].value = 0;
-      document.getElementById(secondDiv).childNodes[1].value = 'USD';
-      document.getElementById(secondDiv).childNodes[2].value = 'Dinheiro';
-      document.getElementById('first-div').childNodes[1].value = 'Alimentação';
+      document.getElementById('description__input').value = '';
+      document.getElementById('value-input').value = 0;
+      document.getElementById('money').childNodes[1].value = 'USD';
+      document.getElementById('methods').value = 'Dinheiro';
+      document.getElementById('categorias').childNodes[1].value = 'Alimentação';
       document.getElementById('box-cinza')
         .appendChild(addButton);
       document.getElementById('box-cinza')
@@ -60,8 +60,7 @@ class Table extends Component {
   render() {
     const { expenses } = this.props;
     return (
-      <>
-        <div id="blue-box" />
+      <div className={ styles.container }>
         <table>
           <thead>
             <tr>
@@ -114,7 +113,7 @@ class Table extends Component {
               ))) : <tr />}
           </tbody>
         </table>
-      </>
+      </div>
     );
   }
 }

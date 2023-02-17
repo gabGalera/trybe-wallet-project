@@ -9,3 +9,14 @@
   justify-content: flex-start;
   width: 70vw;
 }
+
+.blue__box {
+  background: #003be5;
+  border-radius: 10px;
+  box-shadow: -4px 9px 13px rgba(3, 107, 82, 0.3);
+  height: 75vh;
+  position: absolute;
+  top: 21vh;
+  width: 90vw;
+  z-index: -1;
+}

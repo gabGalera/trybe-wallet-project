@@ -35,6 +35,9 @@ class Wallet extends React.Component {
             <Header />
             <WalletForm />
           </div>
+          <div
+            className={ styles.blue__box }
+          />
           <Table />
         </div>
       </>
