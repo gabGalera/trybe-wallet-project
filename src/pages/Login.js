@@ -16,6 +16,12 @@ class Login extends React.Component {
     };
   }
 
+  componentDidMount() {
+    global.alert(
+      'Digite uma senha de pelo menos 6 caracteres e um email válido',
+    );
+  }
+
   handleChange = ({ target }) => {
     this.setState({
       [target.type]: target.value,
