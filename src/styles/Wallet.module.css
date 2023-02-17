@@ -1,15 +1,11 @@
 .container {
   align-items: flex-start;
   background: white;
-  border-radius: 10px;
+  border-radius: 0 0 10px 10px;
   box-shadow: -4px 9px 13px rgba(5, 18, 54, 0.4);
   display: flex;
   flex-direction: column;
-  height: 50vh;
+  height: 70vh;
   justify-content: flex-start;
-  left: 121px;
-
-  /* position: absolute; */
-  top: 0;
-  width: 1137px;
+  width: 70vw;
 }

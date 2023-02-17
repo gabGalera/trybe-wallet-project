@@ -63,7 +63,7 @@ class WalletForm extends Component {
           </label>
           <label
             className={ styles.first__label }
-            htmlFor="categorais"
+            htmlFor="categorias"
           >
             Categoria da despesa
             <select
@@ -102,30 +102,46 @@ class WalletForm extends Component {
               onChange={ this.handleChange }
             />
           </label>
-          <select
-            type="select"
-            data-testid="currency-input"
-            name="submitCurrency"
-            value={ submitCurrency }
-            onClick={ this.handleChange }
-            onChange={ this.handleChange }
+          <label
+            className={ styles.second__label }
+            htmlFor="money"
           >
-            {currencies
-              .map((currency) => (
-                <option key={ currency } value={ currency }>{currency}</option>
-              ))}
-          </select>
-          <select
-            data-testid="method-input"
-            name="submitMethod"
-            value={ submitMethod }
-            onClick={ this.handleChange }
-            onChange={ this.handleChange }
+            Moeda
+            <select
+              id="money"
+              className={ styles.money__box }
+              type="select"
+              data-testid="currency-input"
+              name="submitCurrency"
+              value={ submitCurrency }
+              onClick={ this.handleChange }
+              onChange={ this.handleChange }
+            >
+              {currencies
+                .map((currency) => (
+                  <option key={ currency } value={ currency }>{currency}</option>
+                ))}
+            </select>
+          </label>
+          <label
+            className={ styles.third__label }
+            htmlFor="methods"
           >
-            <option value="Dinheiro">Dinheiro</option>
-            <option value="Cartão de crédito">Cartão de crédito</option>
-            <option value="Cartão de débito">Cartão de débito</option>
-          </select>
+            Método de pagamento
+            <select
+              className={ styles.category__box }
+              id="methods"
+              data-testid="method-input"
+              name="submitMethod"
+              value={ submitMethod }
+              onClick={ this.handleChange }
+              onChange={ this.handleChange }
+            >
+              <option value="Dinheiro">Dinheiro</option>
+              <option value="Cartão de crédito">Cartão de crédito</option>
+              <option value="Cartão de débito">Cartão de débito</option>
+            </select>
+          </label>
         </div>
         <button
           className="add-button"
