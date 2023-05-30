@@ -1,4 +1,4 @@
-# Recipes App Trybe
+# Trybe Wallet
 
 Esse projeto foi elaborado como parte do módulo de front-end da Trybe. Nele foi desenvolvida uma carteira para registrar suas compras e fazer a conversão de diversas moedas estrangeiras para a moeda brasileira utilizando a taxa de câmbio do dia.
 
